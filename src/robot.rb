@@ -1,14 +1,15 @@
 # frozen_string_literal: true
 
 class Robot
-  DELTAS = {
-    'NORTH' => [0,1],
-    'SOUTH' => [0,-1],
-    'WEST' => [-1,0],
-    'EAST' => [1,0]
-  }
+  attr_reader :position
 
-  DIRECTIONS = %w(NORTH EAST SOUTH WEST)
+  DELTAS = {
+    'NORTH' => [0, 1],
+    'SOUTH' => [0, -1],
+    'WEST' => [-1, 0],
+    'EAST' => [1, 0]
+  }.freeze
+  DIRECTIONS = %w[NORTH EAST SOUTH WEST].freeze
 
   def initialize(position, direction, board, name)
     @board = board
@@ -19,6 +20,7 @@ class Robot
 
   def self.build(position:, direction:, board:, name:)
     return false unless board.is_valid?(position)
+
     new(position, direction, board, name)
   end
 
@@ -37,6 +39,7 @@ class Robot
   def move
     new_coords = next_pos
     return @position unless @board.is_valid?(new_coords)
+
     @position = new_coords
   end
 
