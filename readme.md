@@ -1,6 +1,6 @@
 ## Design decisions
 
-The main classes are the `Robot` class, and a `Board` class. There's also an `input` file which can be used for reading in files of commands.  
+The main classes are the `Robot` class, and a `Board` class. There's also an `input` InputCommands class which can be used for reading in files of commands. If we would add further input types it would go here and would then find abstractions within the `process_files` function.
 The Board knows of the Robots to pass along the commands to the correct one as well as be able to track all their positions to check for valid positioning.  
 The Robot will track its own position, direction, and control movement.  
 There are a number of error cases and inputs that are not handled (eg. badly formatted place args).  
@@ -32,4 +32,4 @@ ALICE: 2,1,EAST
 BOB: 1,1,EAST
 ```
 
-Alternatively could load the input.rb file in irb and call `process_files` with whichever files you would like.
+Alternatively could load the input.rb file in irb and call `InputCommands.process_files(filename)` with whichever files you would like.
